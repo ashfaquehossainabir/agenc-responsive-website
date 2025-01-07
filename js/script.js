@@ -6,7 +6,7 @@ const contactBtn = document.getElementById("contact-btn");
 
 contactBtn.onclick = function () {
   setTimeout(() => {
-    window.location.href="https://ashfaquehossainabir.github.io/contact-me/"
+    window.location.href="https://ashfaquehossainabir.github.io/contact-me/";
   }, 700);
 }
 
@@ -93,6 +93,7 @@ $('.banner-slider').slick({
 var swiper = new Swiper(".slide-content", {
   slidesPerView: 3,
   spaceBetween: 25,
+  centeredSlides: true,
   loop: true,
   centerSlide: 'true',
   fade: 'true',
@@ -119,3 +120,22 @@ var swiper = new Swiper(".slide-content", {
       },
   },
 });
+
+
+// ==========================================================
+// -- Active Navlink OnScroll
+// ==========================================================
+
+const sections = document.querySelectorAll('.section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function changeActiveLink() {
+    let index = sections.length;
+
+    while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+    navLinks.forEach((link) => link.classList.remove('active'));
+    navLinks[index].classList.add('active');
+}
+
+window.addEventListener('scroll', changeActiveLink);
